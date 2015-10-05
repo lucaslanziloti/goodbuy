@@ -3,6 +3,9 @@ package br.com.caelum.goodbuy.controller;
 import br.com.caelum.goodbuy.dao.ProdutoDao;
 import br.com.caelum.goodbuy.modelo.Carrinho;
 import br.com.caelum.goodbuy.modelo.Item;
+import br.com.caelum.vraptor.Delete;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -27,7 +30,16 @@ public class CarrinhoController {
     public void adiciona(Item item) {
         dao.recarrega(item.getProduto());
         carrinho.adiciona(item);
+        result.redirectTo(this).visualiza();
+    }
 
-        result.redirectTo(ProdutosController.class).lista();
+    @Get("/carrinho")
+    public void visualiza() {
+    }
+
+    @Delete("/carrinho/{indiceItem}")
+    public void remove(int indiceItem) {
+        carrinho.remove(indiceItem);
+        result.redirectTo(this).visualiza();
     }
 }

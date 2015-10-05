@@ -49,8 +49,12 @@ public class ProdutoDao {
 
     public List<Produto> busca(String nome) {
         Criterion restricaoPorNome = Restrictions.ilike("nome", nome, MatchMode.ANYWHERE);
-        
+
         return session.createCriteria(Produto.class)
                 .add(restricaoPorNome).list();
+    }
+
+    public void recarrega(Produto produto) {
+        session.refresh(produto);
     }
 }

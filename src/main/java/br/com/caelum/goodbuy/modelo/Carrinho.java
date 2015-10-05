@@ -24,6 +24,11 @@ public class Carrinho implements Serializable {
         total += item.getProduto().getPreco() * item.getQuantidade();
     }
 
+    public void remove(int indiceItem) {
+        Item removido = itens.remove(indiceItem);
+        total -= removido.getProduto().getPreco() * removido.getQuantidade();
+    }
+
     public List<Item> getItens() {
         return itens;
     }
@@ -40,4 +45,7 @@ public class Carrinho implements Serializable {
         this.total = total;
     }
 
+    public Integer getTotalDeItens() {
+        return itens.size();
+    }
 }
