@@ -11,6 +11,9 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    
     <mapping class="br.com.caelum.goodbuy.modelo.Produto" />
+    <mapping class="br.com.caelum.goodbuy.modelo.Usuario" />
   </session-factory>
 </hibernate-configuration>
